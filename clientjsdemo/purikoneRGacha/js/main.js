@@ -70,7 +70,7 @@
             } else if (n < STAR3_PROBABILITY) {
                 console.log(`★★★${STAR3_CHARACTERS[Math.floor(Math.random() * STAR3_CHARACTERS.length)]}`);
             } else {
-                console.log(`★${STAR2_CHARACTERS[Math.floor(Math.random() * STAR2_CHARACTERS.length)]}`);
+                console.log(`★★${STAR2_CHARACTERS[Math.floor(Math.random() * STAR2_CHARACTERS.length)]}`);
             }
         }
     }
