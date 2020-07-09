@@ -3,8 +3,8 @@
 console.clear();
 
 {
-    const year = 2020;
-    const month = 6; //5月
+    let year = 2020;
+    let month = 6; //5月
 
     // 取得上个月的最后几天
     function getCalendarHead() {
@@ -61,6 +61,15 @@ console.clear();
     }
 
     function createCalendar() {
+        const tbody = document.querySelector('tbody');
+
+        while (tbody.firstChild) {
+            tbody.removeChild(tbody.firstChild);
+        }
+
+        const title = `${year}/${String(month + 1).padStart(2, '0')}`;
+        document.getElementById('title').textContent = title;
+
         const dates = [
             ...getCalendarHead(),
             ...getCalendarBody(),
@@ -74,9 +83,9 @@ console.clear();
             weeks.push(dates.splice(0, 7));
         }
 
-        weeks.forEach(week =>{
+        weeks.forEach(week => {
             const tr = document.createElement('tr');
-            week.forEach(date =>{
+            week.forEach(date => {
                 const td = document.createElement('td');
 
                 td.textContent = date.date;
@@ -92,6 +101,30 @@ console.clear();
             document.querySelector('tbody').appendChild(tr);
         });
     }
+
+    document.getElementById('prev').addEventListener('click', () => {
+        month--;
+
+        // 如果小于1月，那么要设定为上一年的12月
+        if (month < 0) {
+            year--;
+            month = 11; //12月
+        }
+
+        createCalendar();
+    })
+
+    document.getElementById('next').addEventListener('click', () => {
+        month++;
+
+        // 如果大于12月，那么要设定为下一年的1月
+        if (month > 11) {
+            year++;
+            month = 0; //1月
+        }
+
+        createCalendar();
+    })
 
     createCalendar();
 }
