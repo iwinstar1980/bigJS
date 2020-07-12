@@ -3,8 +3,9 @@
 console.clear();
 
 {
-    let year = 2020;
-    let month = 6; //5月
+    const today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth();
 
     // 取得上个月的最后几天
     function getCalendarHead() {
@@ -40,6 +41,10 @@ console.clear();
             });
         }
 
+        if (year === today.getFullYear() && month === today.getMonth()) {
+            dates[today.getDate() - 1].isToday = true;
+        }
+
         return dates;
     }
 
@@ -60,16 +65,20 @@ console.clear();
         return dates;
     }
 
-    function createCalendar() {
+    function clearCalendar() {
         const tbody = document.querySelector('tbody');
 
         while (tbody.firstChild) {
             tbody.removeChild(tbody.firstChild);
         }
+    }
 
+    function renderTitle() {
         const title = `${year}/${String(month + 1).padStart(2, '0')}`;
         document.getElementById('title').textContent = title;
+    }
 
+    function renderWeeks() {
         const dates = [
             ...getCalendarHead(),
             ...getCalendarBody(),
@@ -102,6 +111,14 @@ console.clear();
         });
     }
 
+    function createCalendar() {
+        clearCalendar();
+        renderTitle();
+        renderWeeks();
+
+    }
+
+    // 点击 上个月 按钮的处理
     document.getElementById('prev').addEventListener('click', () => {
         month--;
 
@@ -114,6 +131,7 @@ console.clear();
         createCalendar();
     })
 
+    // 点击 下个月 按钮的处理
     document.getElementById('next').addEventListener('click', () => {
         month++;
 
@@ -122,6 +140,14 @@ console.clear();
             year++;
             month = 0; //1月
         }
+
+        createCalendar();
+    })
+
+    // 点击 今天 按钮的处理
+    document.getElementById('today').addEventListener('click', ()=>{
+        year = today.getFullYear();
+        month = today.getMonth();
 
         createCalendar();
     })
