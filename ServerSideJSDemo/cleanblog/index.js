@@ -2,8 +2,11 @@ const express = require('express');
 const path = require('path');
 const app = new express();
 const ejs = require('ejs');
+const mongoose = require('mongoose');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+
+mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true})
 
 app.listen(4000, () => {
     console.log('App listening on port 4000');
