@@ -6,10 +6,20 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div id="timer">00:00.000</div>
-<button id="start">Start</button>
-<button id="stop">Stop</button>
-<button id="reset">Reset</button>
+<div class="container">
+    <div id="timer">00:00.000</div>
+    <!--    button tag 在每种浏览器里面会有不同的既定的样式，比较难控制，所以改用div-->
+    <!--    <button id="start">Start</button>-->
+    <!--    <button id="stop">Stop</button>-->
+    <!--    <button id="reset">Reset</button>-->
+
+    <div class="controls">
+
+        <div class="btn" id="start">Start</div>
+        <div class="btn" id="stop">Stop</div>
+        <div class="btn" id="reset">Reset</div>
+    </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>
