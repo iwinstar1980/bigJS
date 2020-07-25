@@ -1,0 +1,25 @@
+body {
+    padding: 64px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: orange;
+    /*transition-property: 指定应用过渡属性的名称*/
+    transition-property: transform;
+    transition-duration: 1s;
+    /*transform-origin: 用于指定动画效果的起点*/
+    transform-origin: top left;
+}
+
+.box:hover {
+    /*transform: translate();  指定横轴，纵轴移动的距离*/
+    /*transform: translate(50px, 20px);*/
+    /*transform: rotate(); 指定旋转的角度*/
+    /*transform: rotate(30deg);*/
+    /*transform: scale(); 指定横轴，纵轴缩放的比例*/
+    transform: scale(0.5, 2);
+    /*复数的属性可以同时指定，根据指定的顺序不同，效果会有不同*/
+    /*transform: translateX(100px) rotate(30deg);*/
+}
