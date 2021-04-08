@@ -8,6 +8,16 @@
 </head>
 <body>
 <h1>Hello world</h1>
-<p>This is a sample application!</p>
+<p id="msg">This is a sample application!</p>
+<div>
+    <button onclick="doAction();">戳我</button>
+</div>
 </body>
+<script>
+    let counter = 0;
+    function doAction() {
+        let p = document.querySelector("#msg");
+        p.textContent = "我被戳了" + ++counter + "下！";
+    }
+</script>
 </html>
